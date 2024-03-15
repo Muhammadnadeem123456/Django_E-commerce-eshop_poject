@@ -1,0 +1,54 @@
+
+{% extends "store/base.html" %}
+
+
+{% block title %}
+Index
+{% endblock  %}
+
+
+{% block content %}
+<div class="container-fluid">
+{% comment %} <div class="row">
+  
+  </div> {% endcomment %}
+
+    <div class="row">
+      
+      <div class="col-lg-3">
+        {% comment %} to display all products {% endcomment %}
+        <div class="list-group mt-3">
+          
+            <a href="/" class="list-group-item list-group-item-action mt-2">All Products</a>
+            
+        </div>
+
+        <div class="list-group mt-3">
+          {% for item  in category %}
+            <a href="/?category={{ item.id }}" class="list-group-item list-group-item-action mt-2">{{item.category_name}}</a>
+            {% endfor %}
+        </div>
+      </div>
+      <div class="col-lg-9">
+        <div class=row ">
+          {% for item  in product %}
+          <div class="card mx-auto  mb-2 mt-2" style="width: 18rem;">
+           <img class="card-img-top" src="{{item.product_image.url}}" alt="Card image cap">
+           <div class="card-body">
+             <h5 class="card-title">{{item.product_name}}</h5>
+             <p class="card-text">$: <b>{{item.product_price}}</b></p>
+             {% comment %} <p class="card-text">$: <b>{{item.available_sizes}}</b></p> {% endcomment %}
+             
+             <a href="#" class="btn btn-primary">Add to card</a>
+           </div>
+         </div>
+           {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock  %}
+
+{% block script %}
+    
+{% endblock  %}
